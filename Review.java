@@ -114,26 +114,6 @@ public class Review {
     return punc;
   }
   
-   /**
-   * Returns the word after removing any beginning or ending punctuation
-   */
-  public static String removePunctuation( String word )
-  {
-    while(word.length() > 0 && !Character.isAlphabetic(word.charAt(0)))
-    {
-      word = word.substring(1);
-    }
-    while(word.length() > 0 && !Character.isAlphabetic(word.charAt(word.length()-1)))
-    {
-      word = word.substring(0, word.length()-1);
-    }
-    
-    return word;
-  }
- 
-
-
-  
   /** 
    * Randomly picks a positive adjective from the positiveAdjectives.txt file and returns it.
    */
@@ -163,6 +143,51 @@ public class Review {
       return randomPositiveAdj();
     } else {
       return randomNegativeAdj();
+    }
+  }
+  public static double totalSentiment(String fileName)
+  {
+    String placeholder = "";
+    double totalSentiment = 0.0;
+    String review = textToString(fileName);
+    
+    //removes punctuation
+    review = review.replaceAll("\\p{Punct}", "");
+    System.out.println(review);
+    for (int i = 0; i < review.length(); i++)
+    {
+      if (review.substring(i, i + 1).equals(" "))
+      {
+        totalSentiment += sentimentVal(placeholder);
+        placeholder = "";
+      }else{
+        placeholder += review.substring(i, i + 1);
+      }
+    }
+    return totalSentiment;
+  }
+  public static int starRating(String fileName)
+  {
+    double totalSentiment = totalSentiment(fileName);
+    if(totalSentiment > 15)
+    {
+      return 4;
+    }
+      else if(totalSentiment > 10)
+    {
+    return 3;
+    }
+      else if(totalSentiment > 5)
+    {
+    return 2;
+    }
+      else if(totalSentiment > 0)
+    {
+      return 1;
+    }
+    else
+    {
+      return 0;
     }
   }
 }

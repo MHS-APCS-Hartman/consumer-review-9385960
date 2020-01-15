@@ -1,20 +1,25 @@
+import java.util.*;
+
 public class TestReview {
   public static void main(String[] args)
   {
-    System.out.println(Review.totalSentiment("SimpleReview.txt")); 
-    //The above line prints -2.9200000000000004
-    
-    System.out.println(Review.starRating("SimpleReview.txt")); 
-    //The above line prints 1
-    
-    System.out.println(Review.totalSentiment2("SimpleReview.txt"));
-    //The above line prints -0.13904761904761906
-    
-     System.out.println(Review.totalSentiment("26WestReview.txt")); 
-    //The above line prints 29.04999999999999
-    
-     System.out.println(Review.starRating("26WestReview.txt")); 
-    //The above line prints 4
-     
+      
+    Scanner input = new Scanner(System.in);
+        /*System.out.println("How many words do you want to enter?");
+        int numWords = input.nextInt();
+        for (int i = 0; i < numWords; i++) {
+            Review comment = new Review();
+
+            System.out.println("Input a word:");
+            String word = input.nextLine();
+            //String word = "Lovely";
+            
+            System.out.println(comment.sentimentVal(word));
+        }    */
+        Review value = new Review();
+        System.out.println("Enter file name");
+        System.out.println(value.totalSentiment(input.nextLine()));
+        System.out.println("Enter file name");
+        System.out.println(Review.starRating(input.nextLine()));
   }
 }
