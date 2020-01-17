@@ -4,7 +4,10 @@ public class TestReview {
   public static void main(String[] args)
   {
       
-    Scanner input = new Scanner(System.in);
+    //Scanner input = new Scanner(System.in);
+
+        //Test for sentimentVal method
+
         /*System.out.println("How many words do you want to enter?");
         int numWords = input.nextInt();
         for (int i = 0; i < numWords; i++) {
@@ -15,11 +18,17 @@ public class TestReview {
             //String word = "Lovely";
             
             System.out.println(comment.sentimentVal(word));
-        }    */
-        Review value = new Review();
+        }    
+        */
+
+        //Test for totalSentiment method
+        /*Review value = new Review();
         System.out.println("Enter file name");
         System.out.println(value.totalSentiment(input.nextLine()));
-        System.out.println("Enter file name");
-        System.out.println(Review.starRating(input.nextLine()));
+        */
+
+        //Test for fakeReview method
+
+    System.out.println(Review.fakeReviewStronger("SimpleReview.txt"));
   }
 }
