@@ -248,10 +248,22 @@ public class Review {
         replace = replace.replaceAll("\\p{Punct}", "");
         if(sentimentVal(replace) > 0)
         {
-          replace = randomPositiveAdj() + " ";
+          String word = replace;
+          replace = randomPositiveAdj();
+          while(sentimentVal(replace) < sentimentVal(word))
+          {
+            replace = randomPositiveAdj();
+          }
+          replace += " ";
         }else if (sentimentVal(replace) < 0)
         {
-          replace = randomNegativeAdj()+ " ";
+          String word = replace;
+          replace = randomNegativeAdj();
+          while(sentimentVal(replace) > sentimentVal(word))
+          {
+            replace = randomNegativeAdj();
+          }
+          replace += " ";
         }else 
         {
           replace = randomAdjective() + " ";
