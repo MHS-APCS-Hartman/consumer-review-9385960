@@ -153,7 +153,6 @@ public class Review {
     
     //removes punctuation
     review = review.replaceAll("\\p{Punct}", "");
-    System.out.println(review);
     for (int i = 0; i < review.length(); i++)
     {
       if (review.substring(i, i + 1).equals(" "))
@@ -189,5 +188,77 @@ public class Review {
     {
       return 0;
     }
+  }
+  public static String fakeReview(String fileName)
+  {
+    String review = textToString(fileName);
+    String fake = "";
+    
+    for(int i = 0; i < review.length()-1; i++)
+    {
+      if(review.substring(i, i+1).equals("*"))
+      {
+        i++;
+        String replace = "";
+        boolean isWord = true;
+        while(isWord)
+        {
+          replace += review.substring(i, i+1);
+          i++;
+          if(review.substring(i, i+1).equals(" "))
+          {
+            isWord = false;
+          }
+        }
+        replace = replace.replaceAll("\\p{Punct}", "");
+        replace = randomAdjective() + " ";
+        fake += replace;
+      }else
+      {
+        fake += review.substring(i, i+1);
+      }
+    }
+    return fake; 
+  }
+
+  public static String fakeReviewStronger(String fileName)
+  {
+    String review = textToString(fileName);
+    String fake = "";
+    
+    for(int i = 0; i < review.length()-1; i++)
+    {
+      if(review.substring(i, i+1).equals("*"))
+      {
+        i++;
+        String replace = "";
+        boolean isWord = true;
+        while(isWord)
+        {
+          replace += review.substring(i, i+1);
+          i++;
+          if(review.substring(i, i+1).equals(" "))
+          {
+            isWord = false;
+          }
+        }
+        replace = replace.replaceAll("\\p{Punct}", "");
+        if(sentimentVal(replace) > 0)
+        {
+          replace = randomPositiveAdj() + " ";
+        }else if (sentimentVal(replace) < 0)
+        {
+          replace = randomNegativeAdj()+ " ";
+        }else 
+        {
+          replace = randomAdjective() + " ";
+        }
+        fake += replace;
+      }else
+      {
+        fake += review.substring(i, i+1);
+      }
+    }
+    return fake; 
   }
 }
