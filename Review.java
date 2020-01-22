@@ -153,8 +153,6 @@ public class Review {
     
     //removes punctuation
     review = review.replaceAll("\\p{Punct}", "");
-    
-
     for (int i = 0; i < review.length(); i++)
     {
       if (review.substring(i, i + 1).equals(" "))
@@ -191,7 +189,6 @@ public class Review {
       return 0;
     }
   }
-
   public static String fakeReview(String fileName)
   {
     String review = textToString(fileName);
@@ -264,6 +261,4 @@ public class Review {
     }
     return fake; 
   }
-
-
 }
